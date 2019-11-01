@@ -1,8 +1,8 @@
 # makepaper
 
 Derived from the stylesheets from `paper-templates`, `makepaper` is an attempt
-to take the basic concept of the former---automate the typesetting of academic
-writing from Markdown sources using Pandoc---and make it more robust. Unlike
+to take the basic concept of the former&mdash;automate the typesetting of academic
+writing from Markdown sources using Pandoc&mdash;and make it more robust. Unlike
 `paper-templates`, `makepaper` is designed to leverage the power of Pandoc's
 templating language instead of relying on Node.js to parse raw HTML templates.
 Additionally, `makepaper` attempts to enhance the built-in functionality of
@@ -12,25 +12,25 @@ template (the default) allows for floating tables with captions and table notes.
 
 ## Dependencies:
 
-- Linux - or, more properly, a Bash-compatible shell. Shell scripting is
+- Linux&mdash;or, more properly, a Bash-compatible shell. Shell scripting is
   lightweight and requires no additional installation in any of my development
-  environments---including Windows, thanks to WSL. Importantly, it is the task
+  environments&mdash;including Windows, thanks to WSL. Importantly, it is the task
   automation system with which I am most experienced.
 
-- [Node.js](https://nodejs.org/en/) & [npm](https://www.npmjs.com/) - While
+- [Node.js](https://nodejs.org/en/) & [npm](https://www.npmjs.com/)&mdash;While
   there are libraries available for parsing and manipulating HTML in Bash,
   the ability to use Cheerio's modified jQuery API for these tasks reduces
   cognitive load, as I already know these conventions.
 
-- [Pandoc](https://github.com/jgm/pandoc) - Handles translation of Markdown to
+- [Pandoc](https://github.com/jgm/pandoc)&mdash;Handles translation of Markdown to
   HTML. Pandoc is a Haskell library and command line application for converting
   between various document formats. In addition to citation management, it
   handles syntax highlighting for me.
 
-- [`pandoc-citeproc`](https://github.com/jgm/pandoc-citeproc) - handles
+- [`pandoc-citeproc`](https://github.com/jgm/pandoc-citeproc)&mdash;handles
   citations, as an extension of Pandoc.
 
-- [Prince](https://www.princexml.com/) - I’m using Prince for HTML/CSS-to-PDF
+- [Prince](https://www.princexml.com/)&mdash;I’m using Prince for HTML/CSS-to-PDF
   conversion because it’s free for noncommercial use, does a nice job on the
   rendering, and handles ligatures nicely.
 
