@@ -78,6 +78,11 @@ However, there are a few features that I've definitely got on the roadmap:
   preferably, in the YAML metadata block.
 - User-specified templates: I'd like to allow the user to specify a template,
   likely with both a command-line passthrough and a YAML metadata option.
+- If I ever have to write something that isn't based off APA style (which is
+  apparently favored by my institution, despite it not really being in vogue for
+  Computer Science research), there's a chance I'd refactor some of the more
+  generalizable functionality (like inclusions) so I can reuse it in other build
+  scripts.
 
 ## Quirks:
 
@@ -139,6 +144,15 @@ keywords:
 These fields are used by Pandoc to generate citations and the bibliography.
 Pandoc can take a bibliography file in Bib(La)TeX, CSL-JSON, and CSL-YAML.
 Citation styles are provided in Citation Style Language `.csl`.
+
+#### `css`
+
+The APA-HTML template (and, likely, future HTML-based build chains) will accept
+arbitrary CSS files for additional styling. This exposes the incredible power of
+Prince's CSS layout engine; one could theoretically overwrite the entire
+stylesheet of the document to produce a radically different
+document&mdash;although, at this point, one would be better off writing a new
+document template and stylesheet.
 
 ### Reference Processing
 
