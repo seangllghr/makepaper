@@ -1,0 +1,83 @@
+@page {
+  margin: 0.875in 1in 1in;
+  size: letter;
+
+  @top-left {
+    content: element(header);
+    font-family: "LM Roman 12", "Times New Roman", serif;
+    font-size: 12pt;
+  }
+
+  @top-right {
+    content: counter(page);
+    font-family: "LM Roman 12", "Times New Roman", serif;
+    font-size: 12pt;
+  }
+
+  @footnote {
+    border-top: thin solid black;
+    position: absolute;
+    bottom: -0.625in;
+  }
+}
+
+@page:first {
+  @top-left {
+    content: element(short-title);
+    font-family: "LM Roman 12", "Times New Roman", serif;
+    font-size: 12pt;
+  }
+}
+
+@media print {
+  html, body {
+    margin: 0;
+    font-size: 12pt;
+  }
+
+  a {
+    text-decoration: none;
+    color: black;
+  }
+
+  header#short-title {
+    position: running(short-title);
+  }
+
+  header#running {
+    position: running(header);
+  }
+
+  #title-page {
+    prince-bookmark-label: "Title Page";
+    prince-bookmark-level: 1;
+  }
+
+  article {
+    prince-bookmark-level: 1;
+    prince-bookmark-label: attr(title);
+  }
+
+  #main-references {
+    page-break-before: always;
+  }
+
+  #main-references h1 {
+    prince-bookmark-level: 1;
+  }
+
+  .figfloat-top {
+    float: top;
+  }
+
+  .footnote {
+    float: footnote;
+    text-indent: 0;
+  }
+
+  *::footnote-call {
+      font-size: xx-small;
+      vertical-align: super;
+  }
+
+}

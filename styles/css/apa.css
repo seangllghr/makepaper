@@ -1,0 +1,341 @@
+/* Page setup and regions */
+
+@page {
+
+    margin: 0.875in 1in 1in;
+    size: letter;
+
+    @top-left {
+        content: element(header);
+    }
+
+    @top-right {
+        content: counter(page);
+    }
+
+    @footnote {
+        border-top: thin solid black;
+        position: absolute;
+        bottom: -0.625in;
+    }
+
+}
+
+@page:first {
+    @top-left {
+        content: element(short-title);
+    }
+}
+
+/* Typography and global styles */
+
+html {
+  font-family: "LM Roman 10", "Times New Roman", serif;
+  font-size: 10pt;
+  line-height: 2;
+  hyphens: auto;
+}
+
+html, body {
+    margin: 0;
+}
+
+article {
+    /* Set figure and table counters */
+    counter-reset: figure-number;
+    counter-reset: table-number;
+    prince-bookmark-level: 1;
+    prince-bookmark-label: attr(data-title)
+}
+
+/* General Typography */
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: 1rem;
+  font-weight: normal;
+  margin: 0;
+  prince-bookmark-level: none;
+}
+
+h1, h2, h3 {
+  page-break-after: avoid;
+}
+
+/* Header tag h1 represents the paper's full title. */
+
+h1 {
+  text-align: center;
+}
+
+/* Header tags h2-h6 implement the five levels of APA sectioning headings.
+ * Note that h4-h6 are inline headers; this requires raw HTML <p> and <h*>
+ * tags in the Markdown source. Also, use .no-break-inside to avoid breaking
+ * inside the first paragraph of a subsubsection or below.
+ * */
+
+h2 {
+  text-align: center;
+  font-weight: bold;
+}
+
+h3 {
+  text-align: left;
+  text-indent: 0;
+  font-weight: bold;
+}
+
+h4, h5, h6 {
+    margin-right: 0.5rem;
+}
+
+h4 {
+  display: inline;
+  font-weight: bold;
+  padding-left: 3rem;
+}
+
+h5 {
+  display: inline;
+  font-weight: bold;
+  font-style: italic;
+  padding-left: 3rem;
+}
+
+h6 {
+  display: inline;
+  font-weight: normal;
+  font-style: italic;
+  padding-left: 3rem;
+}
+
+p {
+  text-indent: 3rem;
+  margin: 0;
+  widows: 2;
+  orphans: 2;
+  text-align: left;
+}
+
+ul, ol {
+    margin: 0 0 0 3rem;
+}
+
+blockquote {
+  margin: 0;
+  margin-left: 3rem;
+}
+
+blockquote p:first-of-type {
+  text-indent: 0;
+}
+
+.abstract * {
+    font-weight: normal;
+}
+
+#title-block-header * {
+    text-indent: 0;
+}
+
+header#short-title {
+    position: running(short-title);
+}
+
+header#running {
+    position: running(header);
+}
+
+/* Figures and table floats, including associated cross-referencing. */
+
+figure {
+  font-size: smaller;
+  counter-increment: figure-number;
+  margin: 0;
+}
+
+figure img {
+    max-width: 6.5in;
+    height: auto;
+}
+
+figcaption {
+    margin: 0 3rem;
+}
+
+figcaption:before {
+    font-style: italic;
+    content: "Figure " counter(figure-number) ":";
+    margin-right: 0.25rem;
+}
+
+.figref {
+    content: target-counter(attr(href), figure-number);
+}
+
+/* TODO: Referable table styles */
+
+.table-float {
+    margin: 0 auto;
+    width: 6.5in;
+    counter-increment: table-number;
+    line-height: 1;
+}
+
+.table-number {
+    display: block;
+    content: "Table " counter(table-number);
+    line-height: 1;
+    margin: 0 !important;
+}
+
+.table-float h3,
+.table-float h4,
+.table-float h5,
+.table-float h6 {
+    display: block;
+    font-size: small;
+    font-style: italic;
+    font-weight: normal;
+    margin: 3pt 0;
+    padding: 0;
+    text-indent: 0;
+}
+
+.table-float table {
+    border-bottom: 1pt solid black;
+    border-top: 1pt solid black;
+    border-collapse: collapse;
+    line-height: 1;
+    width: 100%;
+}
+
+.table-float th,
+.table-float td {
+    padding: 3pt;
+}
+
+.table-float th {
+    border-bottom: 1pt solid black;
+}
+
+.table-notes {
+    font-size: x-small;
+    line-height: 1;
+}
+
+.table-float p {
+    margin: 3pt 0 6pt;
+    text-indent: 0;
+}
+
+/* Footnotes */
+
+.footnote {
+    float: footnote;
+    text-indent: 0;
+}
+
+*::footnote-call {
+    font-size: xx-small;
+    vertical-align: super;
+}
+
+/* Pagination */
+
+
+.full-page {
+    height: 9in;
+    width: 6.5in;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.float-top {
+    float: top;
+}
+
+.man-page-br {
+    display: block;
+    page-break-after: always;
+}
+
+.no-break-inside {
+    page-break-inside: avoid;
+}
+
+/* Title Page or Short Header */
+
+.title-page {
+    height: 9in;
+    prince-bookmark-label: "Title Page";
+    prince-bookmark-level: 1;
+}
+
+.title-page-half {
+    height: 4.5in;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.title-page address {
+    font-style: normal;
+}
+
+.title-page address p {
+    text-align: center;
+    text-indent: 0;
+}
+
+/* Abstract */
+
+.abstract {
+    justify-content: flex-start;
+}
+
+.keywords {
+    list-style: none;
+    margin: 0;
+    width: 100%;
+}
+
+.keywords:before {
+    content: "Keywords:";
+    font-style: italic;
+    margin-left: 3rem;
+    margin-right: 0.25rem;
+}
+
+.keywords li {
+    display: inline;
+}
+
+.keywords li:after {
+    content: ",";
+}
+
+.keywords li:last-of-type:after {
+    content: "";
+}
+
+/* References */
+
+.pageref {
+    content: target-counter(attr(href), page);
+}
+
+#references {
+    page-break-before: always;
+}
+
+.references p {
+  padding-left: 3rem;
+  text-indent: -3rem;
+}

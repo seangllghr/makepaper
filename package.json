@@ -1,0 +1,23 @@
+{
+  "name": "makepaper",
+  "version": "0.1.0",
+  "description": "Build papers using Pandoc and Prince or LaTeX",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "pandoc",
+    "prince",
+    "latex",
+    "apa",
+    "paper"
+  ],
+  "author": "seangllghr",
+  "license": "ISC",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
+    "fs-extra": "^8.1.0",
+    "minimist": "^1.2.0"
+  }
+}
