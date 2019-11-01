@@ -45,7 +45,7 @@ then
              # TODO: Parse the .makepaper for build options and launch the watcher
          elif [ $# -gt 1 ]
          then
-             echo "Error: watcher must be preconfigured using .makepaper or launched with defaults."
+             echo "Error: live build must be preconfigured using .makepaper or launched with defaults."
          else
              echo "No configuration found; using defaults. Starting watcher..."
              build_watcher 'apa-html' 'main.md'

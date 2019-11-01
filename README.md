@@ -161,6 +161,23 @@ BibLaTeX; however, any database format supported by Pandoc should work. Full
 documentation is available in the
 [Pandoc docs](http://pandoc.org/MANUAL.html#citations).
 
+## Live Build and the `.makepaper` file
+
+`makepaper` is configured to enable live build/preview workflows using the
+command
+
+```
+makepaper start
+```
+
+At this time, live build is configured to launch the default APA-HTML build
+tool; future versions will allow other build tools to be selected on a
+document-by-document basis using the `.makepaper` file in the document
+directory. Similarly, future versions will parse the `.makepaper` file when
+`makepaper` is run without arguments. Since I haven't written the logic to do
+that configuration, I haven't decided how I'll structure the configuration file;
+JSON is plausible, but it might be much more simple than that.
+
 ## Licensing and Such
 
 I haven’t picked a license for this project principally because I expect it to
