@@ -1,12 +1,25 @@
 #!/bin/bash
 
+print_help() {
+    echo "Usage: makepaper [start, buildtype, document] [buildtype, document]"
+    echo "Build a paper from a Markdown source file. If no arguments are given, makepaper"
+    echo "will build a standard APA paper using the HTML backend. Arguments can include a"
+    echo "buildtype or document, which can occur in any order, or 'start', which must be"
+    echo "the first option. A valid document must be a .md or .txt file; the extension can"
+    echo "be omitted.
+"
+    echo "Valid buildtypes are: apa-html, math-latex"
+}
+
 init_document () {
     document_filetype=$(echo $1 | cut -d'.' -f 2)
-    if [ $document_filetype == "md" ] || [ $document_filetype == "txt" ]; then
+    if [ $document_filetype == "md" ] || [ $document_filetype == "txt" ] || [ $document_filetype == "tex" ]; then
         document=$1
-    elif test -f "$1.md" || test -f "$1.txt"; then
+    elif test -f "$1.md" || test -f "$1.txt" || test -f "$1.tex"; then
         if test -f "$1.md"; then
             document="$1.md"
+        elif test -f "$1.tex"; then
+            document="$1.tex"
         else
             document="$1.txt"
         fi
@@ -54,6 +67,9 @@ load_settings () {
             echo "Starting watcher..."
             load_makepaper_config
             watcher=true
+        elif [ $1 == "--help" ] || [ $1 == "-h" ]; then
+            print_help
+            exit
         elif ! init_buildtype $1 > /dev/null; then
             load_makepaper_config
             if ! init_document $1 > /dev/null; then
@@ -97,6 +113,7 @@ build_launcher () {
             echo "Building with Pandoc/LaTeX"
             pandoc \
                 --template=$makepaperdir/templates/math.tex \
+                --from=markdown \
                 --to=latex \
                 --output=$(echo $document | cut -d'.' -f 1).pdf \
                 $document
@@ -119,6 +136,8 @@ watcher=false
 
 load_settings $@
 if $watcher; then
+    build_launcher
+    zathura $(echo $document | cut -d'.' -f 1).pdf &
     build_watcher
 else
     build_launcher
