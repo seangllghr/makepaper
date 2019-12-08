@@ -137,7 +137,9 @@ watcher=false
 load_settings $@
 if $watcher; then
     build_launcher
-    zathura $(echo $document | cut -d'.' -f 1).pdf &
+    if [ !$(cat /etc/hostname) = "Asgard" ]; then
+      zathura $(echo $document | cut -d'.' -f 1).pdf &
+    fi
     build_watcher
 else
     build_launcher
