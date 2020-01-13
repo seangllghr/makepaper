@@ -156,6 +156,7 @@ figure {
   font-size: smaller;
   counter-increment: figure-number;
   margin: 0;
+  text-align: center;
 }
 
 figure img {
