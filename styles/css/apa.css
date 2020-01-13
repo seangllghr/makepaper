@@ -166,6 +166,7 @@ figure img {
 
 figcaption {
     margin: 0 3rem;
+    text-align: justify;
 }
 
 figcaption:before {
