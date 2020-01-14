@@ -30,7 +30,7 @@
 /* Typography and global styles */
 
 html {
-  font-family: "LM Roman 10", "Times New Roman", serif;
+  font-family: "LM Roman 12", "Times New Roman", serif;
   font-size: 12pt;
   line-height: 2;
   hyphens: auto;
@@ -70,6 +70,7 @@ h1, h2, h3 {
 
 h1 {
   text-align: center;
+  font-weight: bold;
 }
 
 /* Header tags h2-h6 implement the five levels of APA sectioning headings.
@@ -144,10 +145,12 @@ blockquote p:first-of-type {
 
 header#short-title {
     position: running(short-title);
+    text-transform: uppercase;
 }
 
 header#running {
     position: running(header);
+    text-transform: uppercase;
 }
 
 /* Figures and table floats, including associated cross-referencing. */
@@ -287,11 +290,15 @@ figcaption:before {
     justify-content: center;
 }
 
-.title-page address {
+.title-block {
     font-style: normal;
 }
 
-.title-page address p {
+.title-block h1 {
+    margin-bottom: 2rem;
+}
+
+.title-block p {
     text-align: center;
     text-indent: 0;
 }

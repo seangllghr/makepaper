@@ -13,8 +13,12 @@ const sourceFile = argv._[0]
 
 // Run Pandoc and load the generated HTML into Cheerio
 console.log('Generating HTML...')
-const pandocCommand = 'pandoc --filter=pandoc-citeproc -t html --standalone ' +
-      `--template=${installRoot}/templates/apa.html ${sourceFile}`
+const pandocCommand = 'pandoc' +
+      ' --filter=pandoc-citeproc ' +
+      '-t html --standalone ' +
+      `--template=${installRoot}/templates/apa.html ` +
+      `--csl=${installRoot}/styles/csl/apa.csl ` +
+      `${sourceFile}`
 const $ = cheerio.load(execSync(pandocCommand).toString())
 
 /* Inclusions: Include arbitrary HTML files in the build document

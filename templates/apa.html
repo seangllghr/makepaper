@@ -48,11 +48,11 @@
     $endfor$
     <article data-title="$title$">
       $if(short-title)$
-      <header id="running">$running-head$</header>
+      <header id="running">$short-title$</header>
       $endif$
       $if(title-page)$
       $if(short-title)$
-      <header id="short-title">Running Head: $running-head$</header>
+      <header id="short-title">$short-title$</header>
       $endif$
       <section class="title-page">
         <div class="title-page-half">
@@ -61,6 +61,9 @@
             <p class="author">$author$</p>
             $if(university)$
             <p class="university">$university$</p>
+            <p class="course">$course$</p>
+            <p class="instructor">$instructor$</p>
+            <p class="date">$date$</p>
             $endif$
           </address>
         </div>
