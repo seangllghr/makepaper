@@ -242,6 +242,8 @@ figcaption:before {
 
 .footnote {
     float: footnote;
+    font-size: 10pt;
+    line-height: 1.25;
     text-indent: 0;
 }
 
