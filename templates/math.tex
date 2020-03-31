@@ -392,19 +392,6 @@ $if(classic-title)$
   $endif$
 $endif$
 
-$if(header-block)$
-  \noindent $author$\\
-  $if(short-title)$
-    \noindent $short-title$\\
-  $endif$
-  $if(course)$
-    \noindent $course$
-  $endif$
-  \begin{centering}
-    $title$
-  \end{centering}
-$endif$
-
 \usepackage{tikz}
 \usetikzlibrary{arrows,positioning}
 \usepackage[font=small]{caption}
@@ -418,7 +405,9 @@ $if(title)$
   $if(beamer)$
     \frame{\titlepage}
   $else$
-    \maketitle
+    $if(classic-title)$
+      \maketitle
+    $endif$
   $endif$
   $if(abstract)$
   \begin{abstract}
@@ -466,6 +455,20 @@ $endif$
 $if(has-frontmatter)$
   \mainmatter
 $endif$
+
+$if(header-block)$
+  \noindent $author$\\
+  $if(short-title)$
+    \noindent $short-title$\\
+  $endif$
+  $if(course)$
+    \noindent $course$
+  $endif$
+  \begin{centering}
+    $title$
+  \end{centering}
+$endif$
+
 $body$
 
 $if(has-frontmatter)$
