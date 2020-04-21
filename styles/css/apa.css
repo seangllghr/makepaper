@@ -350,7 +350,8 @@ figcaption:before {
     page-break-before: always;
 }
 
-.references p {
+#refs p {
   padding-left: 3rem;
   text-indent: -3rem;
+  break-inside: avoid;
 }
