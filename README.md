@@ -34,10 +34,14 @@ template (the default) allows for floating tables with captions and table notes.
   conversion because it’s free for noncommercial use, does a nice job on the
   rendering, and handles ligatures nicely.
 
-## Document specs:
+## Document backends:
+
+Two backends are currently implemented with `makepaper`
+
+### `apa-html` backend
 
 The default stylesheet targets the styles outlined in the American Psychological
-Association's 6th Edition style guide.
+Association's style guide---now updated to the 7th Edition!
 
 - 1 inch page margins
 - APA-style running heads, including the paper title and page number
@@ -46,16 +50,25 @@ Association's 6th Edition style guide.
 - Double-spaced paragraphs, indented ½ inch, with no extra space between
 - APA-style in-text citations and reference list, processed from CSL-JSON
 - Five APA-specified headings
+- Figures, with captions, optional floating and full-page styles.
+- Floating tables in APA style, though I so rarely do these I've actually
+  forgotten how they're used.
+- Abstract and abstract page
+
+### `latex-math`
+
+Prince does a reasonable job, and allows for powerful CSS-driven styling and
+layout. However, it struggles with complex mathematics and multiple/long
+footnotes. The LaTeX backend excels in these circumstances, and can also handle
+source code listings and TikZ vector figures.
 
 ## Specifications NOT implemented:
 
 I don’t have to do these things, so I haven’t implemented them. If I have to do
 them at some point, they’ll get an implementation.
 
-- Abstract and abstract page
 - Author’s notes on title page
 - Appendices
-- Tables and Figures
 
 ## Non-APA Features:
 
@@ -71,11 +84,6 @@ Most of the work I do on this is related to things I need for specific classes
 or assignments. As such, there's not really a plan for most future development.
 However, there are a few features that I've definitely got on the roadmap:
 
-- LaTeX typesetting backend: Prince does a reasonable job, and allows for
-  powerful CSS-driven styling and layout. However, it struggles with complex
-  mathematics and multiple/long footnotes. Thus, I'd like to allow the user to
-  select either the LaTeX or HTML/Prince backend, either at the command line or,
-  preferably, in the YAML metadata block.
 - User-specified templates: I'd like to allow the user to specify a template,
   likely with both a command-line passthrough and a YAML metadata option.
 - If I ever have to write something that isn't based off APA style (which is
@@ -93,11 +101,11 @@ at the beginning of their document. Currently supported fields include:
 
 #### `title`, `subtitle`, and `short-title`
 
-The `title` field is required for the currently-implemented HTML-based APA
-template. The template additionally supports the optional `subtitle` and
-`short-title` fields; the `subtitle` is set on a separate line in title blocks,
-while the `short-title` field is used for the short-block header and running
-head. All three are strings.
+The `title` field is required for both current templates. The template
+additionally supports the optional `subtitle`, `running-head` and `short-title`
+fields; the `subtitle` is set on a separate line in title blocks, while the
+`short-title` and `running-head` fields are used for the short-block header and
+running head. All three are strings.
 
 #### `author`
 
@@ -170,13 +178,13 @@ command
 makepaper start
 ```
 
-At this time, live build is configured to launch the default APA-HTML build
-tool; future versions will allow other build tools to be selected on a
-document-by-document basis using the `.makepaper` file in the document
-directory. Similarly, future versions will parse the `.makepaper` file when
-`makepaper` is run without arguments. Since I haven't written the logic to do
-that configuration, I haven't decided how I'll structure the configuration file;
-JSON is plausible, but it might be much more simple than that.
+The default build calls the `apa-html` script on `main.md`. Other build tools
+are selected on a document-by-document basis using the `.makepaper` file in the
+document directory. Two options are currently supported in the `.makepaper`
+file, in shell variable syntax:
+
+- `buildtype=<build-type>`: Can be any supported backend script.
+- `document=<document-name>`: The path to the document to be built.
 
 ## Licensing and Such
 
