@@ -112,7 +112,6 @@ const installRoot = argv.installRoot
 const sourceFile = argv._[0]
 
 const metaFile = loadMeta(sourceFile)
-console.log(metaFile.data)
 
 // Run Pandoc and load the generated HTML into Cheerio
 console.log('Generating HTML...')
