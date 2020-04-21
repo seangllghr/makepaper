@@ -96,6 +96,7 @@ function processCitations(draftFile, installRoot, metaFile) {
         `--csl=${installRoot}/styles/csl/apa.csl ` +
         `--bibliography=${bibFile}`
     execSync('echo $(cat ' + draftFile + ') | ' + pandocCommand)
+    execSync(`sed -i 1d ${draftFile}`) // kludge away the <!DOCTYPE html> line
 }
 
 function processMarkdownInclusion(inclusionPath) {
@@ -184,5 +185,5 @@ fs.writeFileSync(draftFile, $.html())
 processCitations(draftFile, installRoot, metaFile)
 console.log('Generating PDF...')
 execSync('prince draft.html', {stdio: 'inherit'})
-fs.unlinkSync('draft.html')
+// fs.unlinkSync('draft.html')
 console.log('Done!')
