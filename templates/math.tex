@@ -286,6 +286,8 @@ $if(graphics)$
   \def\fps@figure{htbp}
   \makeatother
 $endif$
+% decrease spacing after figures
+\AtEndEnvironment{figure}{\vskip -12pt}
 $if(links-as-notes)$
   % Make links footnotes instead of hotlinks:
   \DeclareRobustCommand{\href}[2]{#2\footnote{\url{#1}}}
@@ -401,6 +403,12 @@ $endif$
 \usetikzlibrary{arrows,positioning}
 \usepackage[font=small]{caption}
 \usepackage{mathtools}
+
+% Remove extra spacing under titles
+\usepackage{titlesec}
+\titlespacing*{\section}{0pt}{0pt}{0pt}
+\titlespacing*{\subsection}{0pt}{0pt}{0pt}
+\titlespacing*{\subsubsection}{0pt}{0pt}{0pt}
 
 \begin{document}
 $if(listings)$
