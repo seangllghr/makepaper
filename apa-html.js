@@ -132,13 +132,17 @@ const figureElementClasses = [
 ]
 console.log('Generating figures...')
 $('figure').each(function (i, obj) {
+  try {
     let classNameArray = $(this).children('img').attr('class').split(/\s+/)
     for (let className of classNameArray) {
-        if (figureElementClasses.includes(className)) {
-            $(this).addClass(className)
-            $(this).children('img').removeClass(className)
-        }
+      if (figureElementClasses.includes(className)) {
+        $(this).addClass(className)
+        $(this).children('img').removeClass(className)
+      }
     }
+  } catch (e) {
+    console.log("Figure has no classes.")
+  }
 })
 
 /* Captioned and Annotated APA-style tables. This grabs any tables not otherwise
