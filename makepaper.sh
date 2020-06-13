@@ -148,8 +148,12 @@ short-title: "Short Title"
 running-head: "RUNNING HEAD"
 course: "Course"
 university: Southern New Hampshire University
+header-block: true
+title-page: false
+bibliography: refs.bib
 ---
 EOF
+    [[ ! -e refs.bib ]] && touch refs.bib
 }
 
 makepaperdir=""
