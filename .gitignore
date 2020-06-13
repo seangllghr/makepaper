@@ -103,7 +103,8 @@ dist
 # TernJS port file
 .tern-port
 
-# Weird emacs latex directory
+# Weird emacs latex stuff
 templates/auto
+templates/.auctex-auto
 
 .#*
