@@ -127,6 +127,33 @@ build_launcher () {
     esac
 }
 
+convert_img () {
+    basename="${2%.*}"
+    if grep "$basename\.png" $document &> /dev/null; then
+        echo "Converting $2"
+        magick $1$2 build/img/$basename.png
+    fi
+}
+
+build_imgs () {
+    if [[ -d src/img ]]; then
+        [[ ! -d build/img ]] && mkdir -p build/img
+        for i in src/img/*; do
+            file="${i##*/}"
+            convert_img src/img/ $file
+        done
+    fi
+}
+
+watch_imgs () {
+    inotifywait -e close_write -m src/img/ |
+        while read -r directory events filename; do
+            echo "$filename updated. Converting..."
+            convert_img $directory $filename
+            build_launcher
+        done
+}
+
 build_watcher () {
     inotifywait -e close_write,moved_to,create -m $document |
         while read -r directory events filename; do
