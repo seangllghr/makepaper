@@ -205,7 +205,7 @@ case $1 in
         if $watcher; then
             build_imgs
             build_launcher
-            watch_imgs
+            watch_imgs &
             build_watcher
         else
             build_imgs
