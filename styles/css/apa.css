@@ -160,7 +160,8 @@ header#running {
 /* Figures and table floats, including associated cross-referencing. */
 
 figure {
-  font-size: smaller;
+  font-size: x-small;
+  line-height: 1.15;
   counter-increment: figure-number;
   margin: 0;
   text-align: center;
@@ -247,7 +248,7 @@ figcaption:before {
 .footnote {
     float: footnote;
     font-size: 10pt;
-    line-height: 1.25;
+    line-height: 1.15;
     text-indent: 0;
 }
 
@@ -270,6 +271,10 @@ figcaption:before {
 
 .float-top {
     float: top;
+}
+
+.float-bottom {
+    float: bottom;
 }
 
 .man-page-br {

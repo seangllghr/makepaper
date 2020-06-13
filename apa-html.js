@@ -126,9 +126,10 @@ $('.include').each(function (i, obj) {
 // Push figure classes up to the implicit figure element added by Pandoc
 
 const figureElementClasses = [
-    // Add classes to this array to pull them up from the image to the figure
-    'float-top',
-    'full-page'
+  // Add classes to this array to pull them up from the image to the figure
+  'float-top',
+  'float-bottom',
+  'full-page'
 ]
 console.log('Generating figures...')
 $('figure').each(function (i, obj) {
