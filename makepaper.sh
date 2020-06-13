@@ -186,6 +186,17 @@ bibliography: refs.bib
 ---
 EOF
     [[ ! -e refs.bib ]] && touch refs.bib
+    if [[ ! -f .makepaper ]]; then
+        echo "document=$filename" > .makepaper
+        case "${filename##*.}" in
+            "md")
+                echo "buildtype=\"apa-html\"" >> .makepaper
+                ;;
+            "tex")
+                echo "buildtype=\"math-latex\"" >> .makepaper
+                ;;
+        esac
+    fi
 }
 
 makepaperdir=""
