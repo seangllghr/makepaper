@@ -135,10 +135,15 @@ build_watcher () {
 }
 
 makepaper_init () {
-    if [[ $# < 1 ]]; then
+    if [[ $# -lt 1 ]]; then
         filename=main.md
     else
-        filename="$1.md"
+        filetype="${1##*.}"
+        if [[ $filetype == $1 ]]; then
+            filename="$1.md"
+        else
+            filename="$1"
+        fi
     fi
     cat << EOF > $filename
 ---
