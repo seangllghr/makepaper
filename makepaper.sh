@@ -1,14 +1,19 @@
 #!/bin/bash
 
 print_help() {
-    echo "Usage: makepaper [start, buildtype, document] [buildtype, document]"
-    echo "Build a paper from a Markdown source file. If no arguments are given, makepaper"
-    echo "will build a standard APA paper using the HTML backend. Arguments can include a"
-    echo "buildtype or document, which can occur in any order, or 'start', which must be"
-    echo "the first option. A valid document must be a .md or .txt file; the extension can"
-    echo "be omitted.
-"
-    echo "Valid buildtypes are: apa-html, math-latex"
+    echo "
+Usage: makepaper [start, buildtype, document] [buildtype, document]
+   or: makepaper [init] [filename stem]
+
+Build a paper from a Markdown source file. If no arguments are given, makepaper
+will build a standard APA paper using the HTML backend. Arguments can include a
+buildtype or document, which can occur in any order, or 'start', which must be
+the first option. A valid document must be a .md or .txt file; the extension can
+be omitted.
+
+Passing 'init' and a filename will generate a blank document.
+
+Valid buildtypes are: apa-html, math-latex"
 }
 
 init_document () {
