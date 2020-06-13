@@ -243,8 +243,7 @@ $if(listings)$
   \newcommand{\passthrough}[1]{#1}
   \lstset{defaultdialect=[5.3]Lua}
   \lstset{defaultdialect=[x86masm]Assembler}
-  \AtBeginEnvironment{lstlisting}{\vskip -12pt\singlespacing}
-  \AtEndEnvironment{lstlisting}{\doublespacing}
+  \lstset{basicstyle=\linespread{1}\ttfamily}
 $endif$
 $if(lhs)$
   \lstnewenvironment{code}{\lstset{language=Haskell,basicstyle=\small\ttfamily}}{}
@@ -464,7 +463,6 @@ $if(listings)$
 
   \lstdefinestyle{JSES6Base}{
     backgroundcolor=\color{white},
-    basicstyle=\ttfamily,
     breakatwhitespace=false,
     breaklines=false,
     captionpos=b,
