@@ -237,9 +237,9 @@ $endif$
 $if(beamer)$
   \newif\ifbibliography
 $endif$
+\usepackage{etoolbox}
 $if(listings)$
   \usepackage{listings}
-  \usepackage{etoolbox}
   \newcommand{\passthrough}[1]{#1}
   \lstset{defaultdialect=[5.3]Lua}
   \lstset{defaultdialect=[x86masm]Assembler}
