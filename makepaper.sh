@@ -193,14 +193,23 @@ buildtype="apa-html"
 document="main.md"
 watcher=false
 
-if [[ $1 == "init" ]]; then
-    makepaper_init $2
-else
-    load_settings $@
-    if $watcher; then
-        build_launcher
-        build_watcher
-    else
-        build_launcher
-    fi
-fi
+case $1 in
+    "init")
+        makepaper_init $2
+        ;;
+    "build-images")
+        build_imgs
+        ;;
+    *)
+        load_settings $@
+        if $watcher; then
+            build_imgs
+            build_launcher
+            watch_imgs
+            build_watcher
+        else
+            build_imgs
+            build_launcher
+        fi
+        ;;
+esac
