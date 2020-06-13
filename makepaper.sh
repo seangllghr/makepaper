@@ -134,17 +134,11 @@ build_watcher () {
         done
 }
 
-makepaperdir=""
-buildtype="apa-html"
-document="main.md"
-watcher=false
-
-if [[ $1 == "init" ]]; then
-    # TODO: init new paper
-    if [[ $# < 2 ]]; then
+makepaper_init () {
+    if [[ $# < 1 ]]; then
         filename=main.md
     else
-        filename="$2.md"
+        filename="$1.md"
     fi
     cat << EOF > $filename
 ---
@@ -156,6 +150,15 @@ course: "Course"
 university: Southern New Hampshire University
 ---
 EOF
+}
+
+makepaperdir=""
+buildtype="apa-html"
+document="main.md"
+watcher=false
+
+if [[ $1 == "init" ]]; then
+    makepaper_init $2
 else
     load_settings $@
     if $watcher; then
