@@ -134,13 +134,32 @@ buildtype="apa-html"
 document="main.md"
 watcher=false
 
-load_settings $@
-if $watcher; then
-    build_launcher
-    if [ !$(cat /etc/hostname) = "Asgard" ]; then
-      zathura $(echo $document | cut -d'.' -f 1).pdf &
+if [[ $1 == "init" ]]; then
+    # TODO: init new paper
+    if [[ $# < 2 ]]; then
+        filename=main.md
+    else
+        filename="$2.md"
     fi
-    build_watcher
+    cat << EOF > $filename
+---
+author: Sean Gallagher
+title: "Assignment Title"
+short-title: "Short Title"
+running-head: "RUNNING HEAD"
+course: "Course"
+university: Southern New Hampshire University
+---
+EOF
 else
-    build_launcher
+    load_settings $@
+    if $watcher; then
+        build_launcher
+        if [ ! $(cat /etc/hostname) = "Asgard" ]; then
+        zathura $(echo $document | cut -d'.' -f 1).pdf &
+        fi
+        build_watcher
+    else
+        build_launcher
+    fi
 fi
