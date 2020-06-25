@@ -120,6 +120,7 @@ build_launcher () {
                 --template=$makepaperdir/templates/math.tex \
                 --from=markdown \
                 --to=latex \
+                --filter=pandoc-citeproc \
                 --output=$(echo $document | cut -d'.' -f 1).pdf \
                 $document
             echo "Done!"
