@@ -290,6 +290,9 @@ $if(graphics)$
 $endif$
 % decrease spacing after figures
 \AtEndEnvironment{figure}{\vskip -12pt}
+
+\usepackage{enumitem}
+\setlist[itemize]{topsep=0pt}
 $if(links-as-notes)$
   % Make links footnotes instead of hotlinks:
   \DeclareRobustCommand{\href}[2]{#2\footnote{\url{#1}}}
