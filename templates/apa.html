@@ -72,11 +72,13 @@
       <section class="abstract full-page">
         <h2>Abstract</h2>
         <p>$abstract$</p>
+        $if(keywords)$
         <ul class="keywords">
           $for(keywords)$
           <li>$keywords$</li>
           $endfor$
         </ul>
+        $endif$
       </section>
       $endif$
       $endif$
