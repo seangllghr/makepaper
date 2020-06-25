@@ -20,6 +20,9 @@ $endif$
   $if(papersize)$
     $papersize$paper,
   $endif$
+  $if(title-page)$
+  titlepage,
+  $endif$
   $if(beamer)$
     ignorenonframetext,
     $if(handout)$
