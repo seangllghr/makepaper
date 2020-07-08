@@ -185,6 +185,10 @@ header-block: true
 title-page: false
 bibliography: refs.bib
 ---
+
+<!-- Local Variables: -->
+<!-- mode: markdown -->
+<!-- End: -->
 EOF
     [[ ! -e refs.bib ]] && touch refs.bib
     if [[ ! -f .makepaper ]]; then
