@@ -190,7 +190,7 @@ bibliography: refs.bib
 <!-- mode: markdown -->
 <!-- End: -->
 EOF
-    [[ ! -e refs.bib ]] && touch refs.bib
+    [[ ! -e refs.bib ]] && ln -s $HOME/Documents/refs/library.bib ./refs.bib
     if [[ ! -f .makepaper ]]; then
         echo "document=$filename" > .makepaper
         case "${filename##*.}" in
