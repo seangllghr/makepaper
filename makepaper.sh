@@ -1,4 +1,5 @@
 #!/bin/bash
+# -*- mode: sh; -*-
 
 print_help() {
     echo "
