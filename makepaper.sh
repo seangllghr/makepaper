@@ -163,6 +163,13 @@ build_watcher () {
         done
 }
 
+watch_bib () {
+    inotifywait -e close_write -m refs.bib |
+        while read -r directory events filename; do
+            build_launcher
+        done
+}
+
 makepaper_init () {
     if [[ $# -lt 1 ]]; then
         filename=main.md
@@ -223,6 +230,7 @@ case $1 in
             build_imgs
             build_launcher
             watch_imgs &
+            watch_bib &
             build_watcher
         else
             build_imgs
