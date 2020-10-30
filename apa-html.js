@@ -99,6 +99,12 @@ function processCitations(draftFile, installRoot, metaFile) {
     execSync(`sed -i 1d ${draftFile}`) // kludge away the <!DOCTYPE html> line
 }
 
+/**
+ * processMarkdownInclusion: read a single file and convert it to HTML
+ *
+ * @param {string} inclusionPath The path to the file to be included
+ * @returns the file contents, converted into an HTML string
+ */
 function processMarkdownInclusion(inclusionPath) {
     pandocCommand = 'pandoc ' +
         '-t  html ' +
