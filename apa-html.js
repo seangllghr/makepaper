@@ -112,6 +112,8 @@ function processMarkdownInclusion(inclusionPath) {
     return execSync(pandocCommand).toString()
 }
 
+/*========== Main Program ==========*/
+
 console.log('This is the APA-HTML paper build script.')
 console.log(`Source file: ${argv._[0]}`)
 
