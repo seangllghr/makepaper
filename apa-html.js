@@ -98,6 +98,12 @@ function processCitations(draftFile, installRoot, metaFile) {
     execSync('echo $(cat ' + draftFile + ') | ' + pandocCommand)
 }
 
+/**
+ * processMarkdownInclusion: read a single file and convert it to HTML
+ *
+ * @param {string} inclusionPath The path to the file to be included
+ * @returns the file contents, converted into an HTML string
+ */
 function processMarkdownInclusion(inclusionPath) {
     pandocCommand = 'pandoc ' +
         '-t  html ' +
