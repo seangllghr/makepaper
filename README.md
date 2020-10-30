@@ -41,7 +41,7 @@ Two backends are currently implemented with `makepaper`
 ### `apa-html` backend
 
 The default stylesheet targets the styles outlined in the American Psychological
-Association's style guide---now updated to the 7th Edition!
+Association's style guide&mdash;now updated to the 7th Edition!
 
 - 1 inch page margins
 - APA-style running heads, including the paper title and page number
@@ -119,12 +119,13 @@ is used in the short-block header, while the latter is set on the title page.
 
 #### `title-page` or `header-block`
 
-One or both of these boolean fields can be set `true` to indicate that the
-relevant type of paper title should be used. The `title-page` attribute produces
-an APA-style title page, with the paper title, author's name, and the university
-affiliation centered on the top half of the page. The latter produces a
-MLA-inspired header block, starting with the author's name and the paper short
-title, and optionally including the course and date.
+One or&mdash;if you're feeling brave&mdash;both of these boolean fields can be
+set `true` to indicate that the relevant type of paper title should be used. The
+`title-page` attribute produces an APA-style title page, with the paper title,
+author's name, and the university affiliation centered on the top half of the
+page. The latter produces a MLA-inspired header block, starting with the
+author's name and the paper short title, and optionally including the course and
+date.
 
 #### `abstract` and `keywords`
 
@@ -190,6 +191,6 @@ file, in shell variable syntax:
 
 I haven’t picked a license for this project principally because I expect it to
 be of limited utility to others. If you want to use it, go for it. If you’d like
-to implement some of the features I haven’t, I’m on board. If you think I suck
-and want horrible things to happen to me, please keep those opinions to
+to implement some of the features I haven’t, I’m on board. If you think I'm
+awful and want horrible things to happen to me, please keep those opinions to
 yourself.
