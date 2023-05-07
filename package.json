@@ -16,7 +16,7 @@
   "author": "seangllghr",
   "license": "ISC",
   "dependencies": {
-    "cheerio": "^1.0.0-rc.3",
+    "cheerio": "^1.0.0-rc.12",
     "fs-extra": "^8.1.0",
     "gray-matter": "^4.0.2",
     "minimist": "^1.2.6"
